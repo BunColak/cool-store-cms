@@ -9,8 +9,8 @@ steps:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - docker stop cool-store-cms_strapi_1 || true
-  - docker rm cool-store-cms_strapi_1 || true
+  - docker stop strapi || true
+  - docker rm strapi || true
 
 - name: Docker Start
   image: docker/compose
