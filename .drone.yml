@@ -2,15 +2,16 @@ kind: pipeline
 type: docker
 name: default
 
+steps:
 - name: build
-  image: node:alpine
+  image: node:14-alpine
   commands:
   - cd app
   - yarn
   - yarn build
 
 - name: start
-  image: node:alpine
+  image: node:14-alpine
   commands:
   - yarn start
 
