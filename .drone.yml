@@ -1,0 +1,35 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: clean
+  image: docker:latest
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker stop cool-store-cms_strapi_1 || true
+  - docker rm cool-store-cms_strapi_1 || true
+
+- name: Docker Start
+  image: docker:latest
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  environment:
+    DB_DATABASE: 
+      from_secret: db_database
+    DB_HOST: 
+      from_secret: db_host 
+    DB_USERNAME: 
+      from_secret: db_username 
+    DB_PASSWORD: 
+      from_secret: db_password 
+  commands:
+  - docker-compose up -d
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
