@@ -1,3 +1,3 @@
-CMS with Strapi for ecommerce
+# Strapi application
 
-test
+A quick description of your strapi application
