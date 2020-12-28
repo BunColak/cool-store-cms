@@ -13,7 +13,7 @@ steps:
   - docker rm cool-store-cms_strapi_1 || true
 
 - name: Docker Start
-  image: docker:latest
+  image: docker/compose
   volumes:
   - name: dockersock
     path: /var/run/docker.sock
