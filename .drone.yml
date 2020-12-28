@@ -13,12 +13,14 @@ steps:
   - docker rm strapi || true
 
 - name: build
+  image: node:alpine
   commands:
   - cd app
   - yarn
   - yarn build
 
 - name: start
+  image: node:alpine
   commands:
   - yarn start
 
