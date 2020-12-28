@@ -12,22 +12,15 @@ steps:
   - docker stop strapi || true
   - docker rm strapi || true
 
-- name: Docker Start
-  image: docker/compose
-  volumes:
-  - name: dockersock
-    path: /var/run/docker.sock
-  environment:
-    DB_DATABASE: 
-      from_secret: db_database
-    DB_HOST: 
-      from_secret: db_host 
-    DB_USERNAME: 
-      from_secret: db_username 
-    DB_PASSWORD: 
-      from_secret: db_password 
+- name: build
   commands:
-  - docker-compose up -d
+  - cd app
+  - yarn
+  - yarn build
+
+- name: start
+  commands:
+  - yarn start
 
 volumes:
 - name: dockersock
