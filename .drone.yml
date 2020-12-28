@@ -5,10 +5,13 @@ name: default
 steps:
 - name: build
   image: node:14-alpine
+  environment:
+    NODE_ENV: production
   commands:
   - cd app
   - yarn
   - yarn build
+  - yarn cache
 
 - name: start
   image: node:14-alpine
