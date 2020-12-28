@@ -3,14 +3,14 @@ type: docker
 name: default
 
 - name: build
-  image: node:14
+  image: node:alpine-14
   commands:
   - cd app
   - yarn
   - yarn build
 
 - name: start
-  image: node:14
+  image: node:alpine-14
   commands:
   - yarn start
 
